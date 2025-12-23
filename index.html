@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bashar Tlay | Software Engineering Portfolio</title>
+  <meta name="description" content="Bashar Tlay — Software Engineering student. Flutter, Laravel, UI/UX. Portfolio, projects, and achievements." />
 
   <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -12,7 +13,10 @@
       darkMode: 'class',
       theme: {
         extend: {
-          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] }
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          boxShadow: {
+            soft: '0 10px 30px rgba(2, 6, 23, 0.10)'
+          }
         }
       }
     }
@@ -21,53 +25,58 @@
   <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- AOS (Animate On Scroll) -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 
   <style>
-    /* Small nice touch for focus outlines */
     :focus-visible { outline: 2px solid rgba(59,130,246,.9); outline-offset: 3px; }
+    .glass { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+    .noise {
+      background-image: radial-gradient(circle at 1px 1px, rgba(148,163,184,.16) 1px, rgba(0,0,0,0) 0);
+      background-size: 18px 18px;
+    }
   </style>
 </head>
 
-<body class="font-sans bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
-  <!-- Background decoration -->
+<body class="font-sans bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 selection:bg-blue-200/70 dark:selection:bg-blue-500/30">
+
+  <!-- Background blobs -->
   <div aria-hidden="true" class="pointer-events-none fixed inset-0 overflow-hidden">
-    <div class="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-blue-400/20 blur-3xl dark:bg-blue-500/10"></div>
-    <div class="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-indigo-400/20 blur-3xl dark:bg-indigo-500/10"></div>
+    <div class="absolute -top-48 -right-48 h-[28rem] w-[28rem] rounded-full bg-blue-400/25 blur-3xl dark:bg-blue-500/12"></div>
+    <div class="absolute -bottom-48 -left-48 h-[28rem] w-[28rem] rounded-full bg-indigo-400/25 blur-3xl dark:bg-indigo-500/12"></div>
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 h-[22rem] w-[22rem] rounded-full bg-emerald-400/10 blur-3xl dark:bg-emerald-500/8"></div>
   </div>
 
   <!-- Navbar -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-slate-950/60 border-b border-slate-200/60 dark:border-slate-800/60">
+  <header class="sticky top-0 z-50 border-b border-slate-200/60 dark:border-slate-800/60 bg-white/70 dark:bg-slate-950/55 glass">
     <nav class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div class="h-16 flex items-center justify-between">
         <a href="#home" class="font-semibold tracking-tight">
           <span class="text-slate-900 dark:text-white">Bashar</span><span class="text-blue-600 dark:text-blue-400">Tlay</span>
         </a>
 
-        <div class="hidden md:flex items-center gap-6 text-sm">
-          <a class="hover:text-blue-600 dark:hover:text-blue-400" href="#about">About</a>
-          <a class="hover:text-blue-600 dark:hover:text-blue-400" href="#skills">Skills</a>
-          <a class="hover:text-blue-600 dark:hover:text-blue-400" href="#projects">Projects</a>
-          <a class="hover:text-blue-600 dark:hover:text-blue-400" href="#achievements">Achievements</a>
-          <a class="hover:text-blue-600 dark:hover:text-blue-400" href="#contact">Contact</a>
+        <div class="hidden md:flex items-center gap-7 text-sm text-slate-700 dark:text-slate-200">
+          <a class="hover:text-blue-600 dark:hover:text-blue-400 transition" href="#about">About</a>
+          <a class="hover:text-blue-600 dark:hover:text-blue-400 transition" href="#skills">Skills</a>
+          <a class="hover:text-blue-600 dark:hover:text-blue-400 transition" href="#projects">Projects</a>
+          <a class="hover:text-blue-600 dark:hover:text-blue-400 transition" href="#achievements">Achievements</a>
+          <a class="hover:text-blue-600 dark:hover:text-blue-400 transition" href="#contact">Contact</a>
         </div>
 
         <div class="flex items-center gap-2">
           <button id="themeBtn" type="button"
-            class="inline-flex items-center justify-center h-10 w-10 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 hover:bg-white dark:hover:bg-slate-900 transition"
+            class="inline-flex items-center justify-center h-10 w-10 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/55 hover:bg-white dark:hover:bg-slate-900 transition"
             aria-label="Toggle dark mode" title="Toggle dark mode">
-            <!-- Sun/Moon icon -->
-            <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-slate-800 dark:text-slate-200">
-              <path d="M12 18a6 6 0 100-12 6 6 0 000 12z" />
-              <path fill-rule="evenodd" d="M12 1a1 1 0 011 1v1a1 1 0 11-2 0V2a1 1 0 011-1zm0 19a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM4.222 4.222a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zm13.435 13.435a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM1 12a1 1 0 011-1h1a1 1 0 110 2H2a1 1 0 01-1-1zm19-1a1 1 0 100 2h1a1 1 0 100-2h-1zM4.222 19.778a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zm13.435-13.435a1 1 0 010-1.414l.707-.707a1 1 0 011.414 1.414l-.707.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            <!-- Moon icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-slate-800 dark:text-slate-200">
+              <path d="M21.752 15.002A9.718 9.718 0 0112 21C6.477 21 2 16.523 2 11c0-4.07 2.424-7.574 5.9-9.09a.75.75 0 01.968.983A7.5 7.5 0 0012 19.5a7.47 7.47 0 005.533-2.444.75.75 0 011.219.946z"/>
             </svg>
           </button>
 
           <button id="menuBtn" type="button"
-            class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 hover:bg-white dark:hover:bg-slate-900 transition"
+            class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/55 hover:bg-white dark:hover:bg-slate-900 transition"
             aria-label="Open menu">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -78,30 +87,32 @@
 
       <!-- Mobile menu -->
       <div id="mobileMenu" class="md:hidden hidden pb-4">
-        <div class="grid gap-2 text-sm">
-          <a class="py-2 hover:text-blue-600 dark:hover:text-blue-400" href="#about">About</a>
-          <a class="py-2 hover:text-blue-600 dark:hover:text-blue-400" href="#skills">Skills</a>
-          <a class="py-2 hover:text-blue-600 dark:hover:text-blue-400" href="#projects">Projects</a>
-          <a class="py-2 hover:text-blue-600 dark:hover:text-blue-400" href="#achievements">Achievements</a>
-          <a class="py-2 hover:text-blue-600 dark:hover:text-blue-400" href="#contact">Contact</a>
+        <div class="grid gap-2 text-sm text-slate-700 dark:text-slate-200">
+          <a class="py-2 hover:text-blue-600 dark:hover:text-blue-400 transition" href="#about">About</a>
+          <a class="py-2 hover:text-blue-600 dark:hover:text-blue-400 transition" href="#skills">Skills</a>
+          <a class="py-2 hover:text-blue-600 dark:hover:text-blue-400 transition" href="#projects">Projects</a>
+          <a class="py-2 hover:text-blue-600 dark:hover:text-blue-400 transition" href="#achievements">Achievements</a>
+          <a class="py-2 hover:text-blue-600 dark:hover:text-blue-400 transition" href="#contact">Contact</a>
         </div>
       </div>
     </nav>
   </header>
 
   <main class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
     <!-- HERO -->
-    <section id="home" class="pt-14 sm:pt-20 pb-10 sm:pb-14">
+    <section id="home" class="pt-14 sm:pt-20 pb-10 sm:pb-14 scroll-mt-28">
       <div class="grid lg:grid-cols-12 gap-10 items-center">
         <div class="lg:col-span-7" data-aos="fade-up">
-          <p class="inline-flex items-center gap-2 text-xs font-medium px-3 py-1 rounded-full border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50">
+          <div class="inline-flex items-center gap-2 text-xs font-medium px-3 py-1 rounded-full border border-slate-200/70 dark:border-slate-800/70 bg-white/70 dark:bg-slate-900/50 glass">
             <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
             Open to internships & projects
-          </p>
+          </div>
 
-          <h1 class="mt-5 text-4xl sm:text-5xl font-bold tracking-tight">
+          <h1 class="mt-5 text-4xl sm:text-5xl font-extrabold tracking-tight">
             Software Engineering Student<br class="hidden sm:block" />
-            <span class="text-blue-600 dark:text-blue-400">Full‑Stack</span> & <span class="text-blue-600 dark:text-blue-400">Cross‑Platform</span> Developer
+            <span class="bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-300">Full‑Stack</span>
+            & <span class="bg-gradient-to-r from-blue-600 to-emerald-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-emerald-300">Cross‑Platform</span> Developer
           </h1>
 
           <p class="mt-5 text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -111,21 +122,25 @@
           </p>
 
           <div class="mt-6 flex flex-wrap gap-3">
-            <!-- Replace links with your real profiles -->
             <a href="mailto:tlybashar@gmail.com"
-               class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition">
+               class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition shadow-soft">
               Email Me
             </a>
 
             <a href="https://github.com/Bashartlay" target="_blank" rel="noreferrer"
-               class="inline-flex items-center justify-center px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-white/70 dark:hover:bg-slate-900/60 transition">
+               class="inline-flex items-center justify-center px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 hover:bg-white/80 dark:hover:bg-slate-900/60 transition glass">
               GitHub
             </a>
 
-            <!-- Optional: upload your CV as "cv.pdf" in the same repo root, then this button will work -->
+            <!-- Upload your CV to the repo root as "cv.pdf" -->
             <a href="./cv.pdf" target="_blank" rel="noreferrer"
-               class="inline-flex items-center justify-center px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-white/70 dark:hover:bg-slate-900/60 transition">
+               class="inline-flex items-center justify-center px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 hover:bg-white/80 dark:hover:bg-slate-900/60 transition glass">
               Download CV
+            </a>
+
+            <a href="https://icpc.global/ICPCID/6U65PZS60EA4" target="_blank" rel="noreferrer"
+               class="inline-flex items-center justify-center px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 hover:bg-white/80 dark:hover:bg-slate-900/60 transition glass">
+              ICPC Profile
             </a>
           </div>
 
@@ -134,12 +149,56 @@
             <span>📞 +963 939 266 021</span>
             <span>🎓 Expected Graduation: 2026</span>
           </div>
+
+          <div class="mt-8 grid sm:grid-cols-3 gap-3 text-sm">
+            <div class="rounded-2xl border border-slate-200/70 dark:border-slate-800/70 bg-white/60 dark:bg-slate-900/35 glass p-4 noise">
+              <p class="font-semibold">Flutter</p>
+              <p class="mt-1 text-slate-600 dark:text-slate-300">Mobile apps • UI/UX</p>
+            </div>
+            <div class="rounded-2xl border border-slate-200/70 dark:border-slate-800/70 bg-white/60 dark:bg-slate-900/35 glass p-4 noise">
+              <p class="font-semibold">Laravel</p>
+              <p class="mt-1 text-slate-600 dark:text-slate-300">APIs • Dashboards</p>
+            </div>
+            <div class="rounded-2xl border border-slate-200/70 dark:border-slate-800/70 bg-white/60 dark:bg-slate-900/35 glass p-4 noise">
+              <p class="font-semibold">Competitive</p>
+              <p class="mt-1 text-slate-600 dark:text-slate-300">SVU‑CPC Bronze</p>
+            </div>
+          </div>
         </div>
 
+        <!-- Photo + snapshot -->
         <div class="lg:col-span-5" data-aos="fade-up" data-aos-delay="100">
-          <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 p-6 shadow-sm">
-            <p class="text-sm font-semibold text-slate-900 dark:text-white">Quick Snapshot</p>
-            <div class="mt-4 grid gap-3 text-sm text-slate-700 dark:text-slate-200">
+          <div class="rounded-3xl border border-slate-200/70 dark:border-slate-800/70 bg-white/60 dark:bg-slate-900/35 glass p-6 shadow-soft noise">
+            <div class="flex items-center justify-between">
+              <p class="text-sm font-semibold text-slate-900 dark:text-white">Quick Snapshot</p>
+              <span class="text-xs px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 glass">Available</span>
+            </div>
+
+            <!-- PHOTO -->
+            <div class="mt-5">
+              <!-- Put your image in the repo root as "profile.jpg" (or change src) -->
+              <div class="relative w-36 h-36 mx-auto">
+                <div class="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/70 via-indigo-500/50 to-emerald-500/60 blur-xl"></div>
+                <div class="absolute inset-1 rounded-full bg-white/60 dark:bg-slate-900/40 glass"></div>
+
+                <img
+                  src="./profile.jpg"
+                  alt="Bashar Tlay"
+                  onerror="this.style.display='none'; document.getElementById('fallbackAvatar').classList.remove('hidden');"
+                  class="relative z-10 w-36 h-36 rounded-full object-cover border border-slate-200 dark:border-slate-800 shadow-soft"
+                />
+
+                <div id="fallbackAvatar" class="hidden relative z-10 w-36 h-36 rounded-full border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 glass shadow-soft grid place-items-center">
+                  <span class="text-3xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-300">BT</span>
+                </div>
+              </div>
+
+              <p class="mt-4 text-center text-sm text-slate-600 dark:text-slate-300">
+                Upload <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800">profile.jpg</code> next to <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800">index.html</code>.
+              </p>
+            </div>
+
+            <div class="mt-6 grid gap-3 text-sm text-slate-700 dark:text-slate-200">
               <div class="flex items-start gap-3">
                 <span class="mt-0.5">✅</span>
                 <p><span class="font-medium">Focus:</span> Flutter apps, Laravel backends, UI/UX</p>
@@ -150,32 +209,27 @@
               </div>
               <div class="flex items-start gap-3">
                 <span class="mt-0.5">✅</span>
-                <p><span class="font-medium">Competitive Programming:</span> SVU‑CPC Bronze medalist</p>
+                <p><span class="font-medium">Highlighted:</span> PassMed Arabia front-end</p>
               </div>
-            </div>
-
-            <!-- Optional photo placeholder -->
-            <div class="mt-6 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 p-6 text-center text-sm text-slate-500 dark:text-slate-400">
-              Add your photo here (optional).<br />
-              Replace this box with an <code class="px-1 rounded bg-slate-100 dark:bg-slate-800">img</code> tag.
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="py-12 sm:py-16">
+    <section id="about" class="py-12 sm:py-16 scroll-mt-28">
       <div class="grid lg:grid-cols-12 gap-8 items-start">
         <div class="lg:col-span-4" data-aos="fade-up">
-          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">About</h2>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">About</h2>
           <p class="mt-3 text-slate-600 dark:text-slate-300">
             A quick introduction and what I enjoy building.
           </p>
         </div>
 
         <div class="lg:col-span-8" data-aos="fade-up" data-aos-delay="100">
-          <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 p-6 sm:p-8 shadow-sm">
+          <div class="rounded-3xl border border-slate-200/70 dark:border-slate-800/70 bg-white/60 dark:bg-slate-900/35 glass p-6 sm:p-8 shadow-soft noise">
             <p class="text-slate-700 dark:text-slate-200 leading-relaxed">
               I'm <span class="font-semibold">Bashar Tlay</span>, a Software Engineering student at Damascus University.
               I build cross-platform mobile apps with <span class="font-semibold">Flutter</span> and develop backends/web apps
@@ -184,14 +238,14 @@
             </p>
 
             <div class="mt-6 grid sm:grid-cols-2 gap-4 text-sm">
-              <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-4">
+              <div class="rounded-2xl border border-slate-200/70 dark:border-slate-800/70 p-4 bg-white/40 dark:bg-slate-900/25 glass">
                 <p class="font-semibold">Education</p>
                 <p class="mt-1 text-slate-600 dark:text-slate-300">
                   Damascus University — B.Sc. in Software Engineering (4th Year)<br />
                   Expected Graduation: 2026
                 </p>
               </div>
-              <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-4">
+              <div class="rounded-2xl border border-slate-200/70 dark:border-slate-800/70 p-4 bg-white/40 dark:bg-slate-900/25 glass">
                 <p class="font-semibold">Training</p>
                 <p class="mt-1 text-slate-600 dark:text-slate-300">
                   Flutter Training Program — Al‑Barakah Association (2024)
@@ -212,10 +266,10 @@
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="py-12 sm:py-16">
+    <section id="skills" class="py-12 sm:py-16 scroll-mt-28">
       <div class="grid lg:grid-cols-12 gap-8">
         <div class="lg:col-span-4" data-aos="fade-up">
-          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Skills</h2>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Skills</h2>
           <p class="mt-3 text-slate-600 dark:text-slate-300">
             Tech stack and tools I use.
           </p>
@@ -223,7 +277,7 @@
 
         <div class="lg:col-span-8" data-aos="fade-up" data-aos-delay="100">
           <div class="grid sm:grid-cols-2 gap-4">
-            <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 p-6 shadow-sm">
+            <div class="card">
               <p class="font-semibold">Programming</p>
               <div class="mt-3 flex flex-wrap gap-2 text-sm">
                 <span class="tag">C/C++</span><span class="tag">Python</span><span class="tag">PHP</span><span class="tag">Java</span>
@@ -232,60 +286,112 @@
               </div>
             </div>
 
-            <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 p-6 shadow-sm">
+            <div class="card">
               <p class="font-semibold">Frameworks & Libraries</p>
               <div class="mt-3 flex flex-wrap gap-2 text-sm">
-                <span class="tag">Flutter</span><span class="tag">Laravel</span><span class="tag">Bootstrap</span>
+                <span class="tag">Flutter</span><span class="tag">Laravel</span><span class="tag">Bootstrap</span><span class="tag">Tailwind</span>
               </div>
             </div>
 
-            <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 p-6 shadow-sm">
+            <div class="card">
               <p class="font-semibold">Databases</p>
               <div class="mt-3 flex flex-wrap gap-2 text-sm">
                 <span class="tag">MySQL</span><span class="tag">SQL</span>
               </div>
             </div>
 
-            <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 p-6 shadow-sm">
+            <div class="card">
               <p class="font-semibold">Tools</p>
               <div class="mt-3 flex flex-wrap gap-2 text-sm">
-                <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Postman</span>
+                <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Postman</span><span class="tag">Figma</span>
               </div>
             </div>
           </div>
 
           <style>
-            .tag { padding: .35rem .6rem; border-radius: 9999px; border: 1px solid rgba(148,163,184,.6); }
-            .dark .tag { border-color: rgba(51,65,85,.9); }
+            .card{
+              border-radius: 1.5rem;
+              border: 1px solid rgba(148,163,184,.45);
+              padding: 1.5rem;
+              background: rgba(255,255,255,.60);
+              box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+              backdrop-filter: blur(14px);
+              -webkit-backdrop-filter: blur(14px);
+            }
+            .dark .card{
+              border-color: rgba(51,65,85,.95);
+              background: rgba(15,23,42,.35);
+            }
+            .tag{ padding: .35rem .65rem; border-radius: 9999px; border: 1px solid rgba(148,163,184,.55); }
+            .dark .tag{ border-color: rgba(51,65,85,.95); }
           </style>
         </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="py-12 sm:py-16">
+    <section id="projects" class="py-12 sm:py-16 scroll-mt-28">
       <div class="flex items-end justify-between gap-6" data-aos="fade-up">
         <div>
-          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Projects</h2>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Projects</h2>
           <p class="mt-3 text-slate-600 dark:text-slate-300">
-            A couple of projects I’m proud of. (You can add more cards easily.)
+            Featured work and selected projects. (Links are placeholders — replace anytime.)
           </p>
         </div>
-        <a href="https://github.com/your-username" target="_blank" rel="noreferrer"
-           class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-white/70 dark:hover:bg-slate-900/60 transition">
+        <a href="https://github.com/Bashartlay" target="_blank" rel="noreferrer"
+           class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 hover:bg-white/80 dark:hover:bg-slate-900/60 transition glass">
           View GitHub
         </a>
       </div>
 
-      <div class="mt-8 grid lg:grid-cols-2 gap-5">
-        <!-- Project 1 -->
-        <article class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 p-6 sm:p-7 shadow-sm"
-                 data-aos="fade-up" data-aos-delay="50">
+      <!-- Featured project -->
+      <article class="mt-8 rounded-3xl border border-slate-200/70 dark:border-slate-800/70 bg-white/60 dark:bg-slate-900/35 glass p-6 sm:p-8 shadow-soft noise overflow-hidden"
+               data-aos="fade-up" data-aos-delay="80">
+        <div aria-hidden="true" class="relative">
+          <div class="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-blue-500/20 blur-3xl"></div>
+          <div class="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-emerald-500/15 blur-3xl"></div>
+        </div>
+
+        <div class="relative">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-600 text-white">Featured</span>
+              <span class="text-xs font-medium px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 glass">Front‑End</span>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="tag">Responsive UI</span><span class="tag">Performance</span><span class="tag">UX</span>
+            </div>
+          </div>
+
+          <h3 class="mt-4 text-xl sm:text-2xl font-bold tracking-tight">PassMed Arabia — Doctors’ Exam Platform</h3>
+
+          <p class="mt-3 text-slate-600 dark:text-slate-300 leading-relaxed">
+            Worked on the <span class="font-semibold">front‑end</span> for PassMed Arabia: building responsive pages,
+            reusable UI components, and a smooth user experience for medical exam preparation.
+          </p>
+
+          <ul class="mt-4 grid sm:grid-cols-2 gap-2 text-sm text-slate-700 dark:text-slate-200">
+            <li>• Implemented core UI screens and layouts</li>
+            <li>• Improved responsiveness across devices</li>
+            <li>• Polished interactions and accessibility</li>
+            <li>• Prepared structure for scalable UI components</li>
+          </ul>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a class="btnPrimary" href="https://passmedarabia.com/" target="_blank" rel="noreferrer">Live Website</a>
+            <a class="btnGhost" href="https://github.com/Bashartlay/PASSMED_FRONTEND_REPO" target="_blank" rel="noreferrer">Source Code (GitHub)</a>
+            <a class="btnGhost" href="https://example.com/passmed-case-study" target="_blank" rel="noreferrer">Case Study (placeholder)</a>
+          </div>
+        </div>
+      </article>
+
+      <div class="mt-6 grid lg:grid-cols-2 gap-5">
+
+        <!-- Restaurant -->
+        <article class="projCard" data-aos="fade-up" data-aos-delay="50">
           <div class="flex items-start justify-between gap-4">
             <h3 class="text-lg font-semibold">Restaurant Food Ordering & Web Management Platform</h3>
-            <span class="text-xs font-medium px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-800">
-              Flutter + Laravel
-            </span>
+            <span class="pill">Flutter + Laravel</span>
           </div>
 
           <p class="mt-3 text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -304,22 +410,16 @@
           </div>
 
           <div class="mt-6 flex flex-wrap gap-3">
-            <!-- Replace with your real links -->
-            <a class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
-               href="https://mostaql.com/u/Bashar_tly/portfolio" target="_blank" rel="noreferrer">Project Link</a>
-            <a class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
-               href="https://github.com/Bashartlay?tab=repositories" target="_blank" rel="noreferrer">Source Code</a>
+            <a class="link" href="https://example.com/restaurant-project" target="_blank" rel="noreferrer">Project Link (placeholder)</a>
+            <a class="link" href="https://github.com/Bashartlay/RESTAURANT_SYSTEM_REPO" target="_blank" rel="noreferrer">Source Code (GitHub)</a>
           </div>
         </article>
 
-        <!-- Project 2 -->
-        <article class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 p-6 sm:p-7 shadow-sm"
-                 data-aos="fade-up" data-aos-delay="120">
+        <!-- Quiz -->
+        <article class="projCard" data-aos="fade-up" data-aos-delay="120">
           <div class="flex items-start justify-between gap-4">
             <h3 class="text-lg font-semibold">Interactive Multiplayer Quiz App</h3>
-            <span class="text-xs font-medium px-2.5 py-1 rounded-full border border-slate-200 dark:border-slate-800">
-              Real‑Time Game
-            </span>
+            <span class="pill">Flutter + Laravel</span>
           </div>
 
           <p class="mt-3 text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -334,39 +434,127 @@
           </ul>
 
           <div class="mt-5 flex flex-wrap gap-2 text-xs">
-            <span class="tag">Sockets</span><span class="tag">UI/UX</span><span class="tag">Laravel API</span><span class="tag">Flutter</span>
+            <span class="tag">Sockets</span><span class="tag">UI/UX</span><span class="tag">API</span><span class="tag">Flutter</span>
           </div>
 
           <div class="mt-6 flex flex-wrap gap-3">
-            <!-- Replace with your real links -->
-            <a class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
-               href="https://your-project-link.example" target="_blank" rel="noreferrer">Project Link</a>
-            <a class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline"
-               href="https://github.com/your-username/your-repo" target="_blank" rel="noreferrer">Source Code</a>
+            <a class="link" href="https://example.com/quiz-project" target="_blank" rel="noreferrer">Project Link (placeholder)</a>
+            <a class="link" href="https://github.com/Bashartlay/QUIZ_APP_REPO" target="_blank" rel="noreferrer">Source Code (GitHub)</a>
           </div>
         </article>
+
+        <!-- SE3 Design Patterns Banking -->
+        <article class="projCard" data-aos="fade-up" data-aos-delay="70">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="text-lg font-semibold">Advanced Banking System with Design Patterns (SE3)</h3>
+            <span class="pill">Architecture</span>
+          </div>
+
+          <p class="mt-3 text-slate-600 dark:text-slate-300 leading-relaxed">
+            A modular and extensible banking system design demonstrating structural and behavioral design patterns,
+            with emphasis on clean separation of concerns and scalability.
+          </p>
+
+          <div class="mt-4 grid gap-2 text-sm text-slate-700 dark:text-slate-200">
+            <p>• Includes: account management, transactions, notifications, RBAC, reporting</p>
+            <p>• Patterns: Composite, Adapter, Decorator, Observer, Strategy, Chain of Responsibility (and more)</p>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <!-- IMPORTANT: file:/// links won't work on GitHub Pages. Upload the PDF into your repo and link it like "./se3-project.pdf" -->
+            <a class="link" href="./se3-project.pdf" target="_blank" rel="noreferrer">Project PDF (upload as se3-project.pdf)</a>
+            <a class="link" href="https://github.com/Bashartlay/ADV_BANKING_SYSTEM_REPO" target="_blank" rel="noreferrer">Source Code (GitHub)</a>
+          </div>
+        </article>
+
       </div>
 
       <div class="mt-6 sm:hidden">
-        <a href="https://github.com/your-username" target="_blank" rel="noreferrer"
-           class="inline-flex w-full items-center justify-center px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-white/70 dark:hover:bg-slate-900/60 transition">
+        <a href="https://github.com/Bashartlay" target="_blank" rel="noreferrer"
+           class="inline-flex w-full items-center justify-center px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 hover:bg-white/80 dark:hover:bg-slate-900/60 transition glass">
           View GitHub
         </a>
       </div>
+
+      <style>
+        .projCard{
+          border-radius: 1.5rem;
+          border: 1px solid rgba(148,163,184,.45);
+          background: rgba(255,255,255,.60);
+          padding: 1.5rem;
+          box-shadow: 0 10px 30px rgba(2,6,23,.08);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          transition: transform .25s ease, border-color .25s ease, background .25s ease;
+        }
+        .projCard:hover{ transform: translateY(-3px); border-color: rgba(59,130,246,.55); }
+        .dark .projCard{
+          border-color: rgba(51,65,85,.95);
+          background: rgba(15,23,42,.35);
+        }
+        .dark .projCard:hover{ border-color: rgba(96,165,250,.55); }
+
+        .pill{
+          white-space: nowrap;
+          font-size: .75rem;
+          font-weight: 600;
+          padding: .25rem .6rem;
+          border-radius: 9999px;
+          border: 1px solid rgba(148,163,184,.55);
+        }
+        .dark .pill{ border-color: rgba(51,65,85,.95); }
+
+        .link{
+          font-size: .875rem;
+          font-weight: 600;
+          color: rgb(37 99 235);
+        }
+        .dark .link{ color: rgb(96 165 250); }
+        .link:hover{ text-decoration: underline; }
+
+        .btnPrimary{
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: .55rem 1rem;
+          border-radius: .9rem;
+          background: rgb(37 99 235);
+          color: white;
+          font-weight: 800;
+          box-shadow: 0 10px 30px rgba(2,6,23,.12);
+          transition: transform .2s ease, background .2s ease;
+        }
+        .btnPrimary:hover{ background: rgb(29 78 216); transform: translateY(-1px); }
+
+        .btnGhost{
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: .55rem 1rem;
+          border-radius: .9rem;
+          border: 1px solid rgba(148,163,184,.55);
+          background: rgba(255,255,255,.55);
+          font-weight: 800;
+          transition: transform .2s ease, background .2s ease;
+        }
+        .dark .btnGhost{ border-color: rgba(51,65,85,.95); background: rgba(15,23,42,.30); }
+        .btnGhost:hover{ transform: translateY(-1px); background: rgba(255,255,255,.8); }
+        .dark .btnGhost:hover{ background: rgba(15,23,42,.45); }
+      </style>
     </section>
 
     <!-- ACHIEVEMENTS -->
-    <section id="achievements" class="py-12 sm:py-16">
+    <section id="achievements" class="py-12 sm:py-16 scroll-mt-28">
       <div class="grid lg:grid-cols-12 gap-8 items-start">
         <div class="lg:col-span-4" data-aos="fade-up">
-          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Achievements</h2>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Achievements</h2>
           <p class="mt-3 text-slate-600 dark:text-slate-300">
             Competitive programming & activities.
           </p>
         </div>
 
         <div class="lg:col-span-8" data-aos="fade-up" data-aos-delay="100">
-          <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 p-6 sm:p-8 shadow-sm">
+          <div class="rounded-3xl border border-slate-200/70 dark:border-slate-800/70 bg-white/60 dark:bg-slate-900/35 glass p-6 sm:p-8 shadow-soft noise">
             <ul class="space-y-3 text-slate-700 dark:text-slate-200">
               <li class="flex gap-3">
                 <span class="mt-1">🏅</span>
@@ -386,12 +574,10 @@
               </li>
             </ul>
 
-            <div class="mt-6 text-sm text-slate-600 dark:text-slate-300">
-              <!-- Replace these with real profile URLs -->
-              Profiles:
-              <a class="text-blue-600 dark:text-blue-400 hover:underline" href="https://your-cp-profile.example" target="_blank" rel="noreferrer">SVU‑CPC / SCPC</a>
-              ·
-              <a class="text-blue-600 dark:text-blue-400 hover:underline" href="https://your-cp-profile.example" target="_blank" rel="noreferrer">ACPC</a>
+            <div class="mt-6 flex flex-wrap items-center gap-3 text-sm">
+              <span class="text-slate-600 dark:text-slate-300">Profiles:</span>
+              <a class="link" href="https://icpc.global/ICPCID/6U65PZS60EA4" target="_blank" rel="noreferrer">ICPC Global ID</a>
+              <a class="link" href="https://example.com/cp-profile" target="_blank" rel="noreferrer">Other CP Profile (placeholder)</a>
             </div>
           </div>
         </div>
@@ -399,18 +585,18 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="py-12 sm:py-16">
-      <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 p-6 sm:p-10 shadow-sm"
+    <section id="contact" class="py-12 sm:py-16 scroll-mt-28">
+      <div class="rounded-3xl border border-slate-200/70 dark:border-slate-800/70 bg-white/60 dark:bg-slate-900/35 glass p-6 sm:p-10 shadow-soft noise"
            data-aos="fade-up">
         <div class="grid lg:grid-cols-12 gap-8 items-start">
           <div class="lg:col-span-6">
-            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Let’s work together</h2>
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Let’s work together</h2>
             <p class="mt-3 text-slate-600 dark:text-slate-300">
               Want to build a Flutter app, a Laravel backend, or a full-stack project? Send me a message.
             </p>
 
             <div class="mt-6 grid gap-2 text-sm">
-              <a class="hover:underline text-blue-600 dark:text-blue-400" href="mailto:tlybashar@gmail.com">tlybashar@gmail.com</a>
+              <a class="link" href="mailto:tlybashar@gmail.com">tlybashar@gmail.com</a>
               <span class="text-slate-600 dark:text-slate-300">Damascus, Syria</span>
               <span class="text-slate-600 dark:text-slate-300">+963 939 266 021</span>
             </div>
@@ -422,13 +608,13 @@
                 <label class="grid gap-1 text-sm">
                   <span class="font-medium">Name</span>
                   <input name="name" required
-                         class="h-11 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 px-3"
+                         class="h-11 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 glass px-3"
                          placeholder="Your name" />
                 </label>
                 <label class="grid gap-1 text-sm">
                   <span class="font-medium">Email</span>
                   <input name="email" type="email" required
-                         class="h-11 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 px-3"
+                         class="h-11 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 glass px-3"
                          placeholder="you@example.com" />
                 </label>
               </div>
@@ -436,14 +622,11 @@
               <label class="grid gap-1 text-sm">
                 <span class="font-medium">Message</span>
                 <textarea name="message" rows="4" required
-                          class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/50 p-3"
+                          class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 glass p-3"
                           placeholder="Tell me about your project..."></textarea>
               </label>
 
-              <button type="submit"
-                class="inline-flex items-center justify-center h-11 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition">
-                Send
-              </button>
+              <button type="submit" class="btnPrimary h-11">Send</button>
 
               <p class="text-xs text-slate-500 dark:text-slate-400">
                 This form opens your email client (no backend needed).
@@ -459,10 +642,19 @@
     </footer>
   </main>
 
+  <!-- Back to top -->
+  <a href="#home"
+     class="fixed bottom-5 right-5 z-50 inline-flex items-center justify-center h-11 w-11 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/55 glass shadow-soft hover:scale-[1.02] transition"
+     aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-7 7m7-7l7 7"/>
+    </svg>
+  </a>
+
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     // AOS init
-    AOS.init({ once: true, duration: 650, easing: 'ease-out' });
+    AOS.init({ once: true, duration: 700, easing: 'ease-out' });
 
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -485,7 +677,6 @@
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) setTheme(savedTheme);
     else {
-      // Respect system preference
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       setTheme(prefersDark ? 'dark' : 'light');
     }
@@ -497,11 +688,10 @@
 
     // Contact form opens mail client
     function openMail(form) {
-      const name = encodeURIComponent(form.name.value.trim());
-      const email = encodeURIComponent(form.email.value.trim());
-      const message = encodeURIComponent(form.message.value.trim());
       const subject = encodeURIComponent(`Portfolio Contact: ${form.name.value.trim()}`);
-      const body = encodeURIComponent(`Name: ${form.name.value.trim()}\nEmail: ${form.email.value.trim()}\n\n${form.message.value.trim()}`);
+      const body = encodeURIComponent(
+        `Name: ${form.name.value.trim()}\nEmail: ${form.email.value.trim()}\n\n${form.message.value.trim()}`
+      );
       window.location.href = `mailto:tlybashar@gmail.com?subject=${subject}&body=${body}`;
       return false;
     }
